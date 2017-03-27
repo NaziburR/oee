@@ -245,8 +245,54 @@ class Admin extends CI_Controller
         
     }
 
+    function batch()
+    {
+        if($this->session->userdata('admin_login')!=1)
+            redirect ('login','refresh');
+        $page_data['page_name']  = 'batch';
+	$page_data['page_title'] = 'Batch';
+	$this->load->view('backend/index', $page_data);
+    }
 
 
+    function manage_batch($param='',$param1='')
+    {
+        if($this->session->userdata('admin_login')!=1)
+            redirect ('login','refresh');
+        
+        if($param=='create')
+        {
+            $data['id']= $this->input->post('batchid');
+            $data['batch_name']= $this->input->post('batchname');
+            $data['start_year']= $this->input->post('startyear');
+            $data['end_year']= $this->input->post('endyear');
+            $data['course_id']= $this->input->post('courseid');
+            
+            $this->db->insert('batch',$data);
+            $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
+            redirect(base_url().'index.php?/admin/batch/','refresh');
+        }
+        if($param=='edit')
+        {
+            $data['batch_name']= $this->input->post('batchname');
+            $data['start_year']= $this->input->post('startyear');
+            $data['end_year']= $this->input->post('endyear');
+            $data['course_id']= $this->input->post('courseid');
+            
+            //print_r($data);
+            $this->db->where('id' , $param1);
+            $this->db->update('batch' , $data);
+            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+            redirect(base_url() . 'index.php?admin/batch/', 'refresh');
+        }
+        if($param=='delete')
+        {
+            $this->db->where('id' , $param1);
+            $this->db->delete('batch');
+            $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
+            redirect(base_url() . 'index.php?admin/batch/', 'refresh');
+        }
+    }
 
     /****MANAGE PARENTS CLASSWISE*****/
     function parent($param1 = '', $param2 = '', $param3 = '')
@@ -422,53 +468,51 @@ class Admin extends CI_Controller
     }
 
     /****MANAGE SECTIONS*****/
-    function section($class_id = '')
+    function section()
     {
-        if ($this->session->userdata('admin_login') != 1)
-            redirect(base_url(), 'refresh');
-        // detect the first class
-        if ($class_id == '')
-            $class_id           =   $this->db->get('class')->first_row()->class_id;
-
+        if($this->session->userdata('admin_login')!=1)
+            redirect ('login','refresh');
         $page_data['page_name']  = 'section';
-        $page_data['page_title'] = get_phrase('manage_sections');
-        $page_data['class_id']   = $class_id;
-        $this->load->view('backend/index', $page_data);    
+	$page_data['page_title'] = 'section';
+	$this->load->view('backend/index', $page_data);
     }
 
     function sections($param1 = '' , $param2 = '')
     {
         if ($this->session->userdata('admin_login') != 1)
             redirect(base_url(), 'refresh');
+        
         if ($param1 == 'create') {
-            $data['name']       =   $this->input->post('name');
-            $data['nick_name']  =   $this->input->post('nick_name');
-            $data['class_id']   =   $this->input->post('class_id');
-            $data['teacher_id'] =   $this->input->post('teacher_id');
+            $data['section_id']    =   $this->input->post('sectionid');
+            $data['section_name']  =   $this->input->post('sectionname');
+            $data['intake']        =   $this->input->post('intake');
             $this->db->insert('section' , $data);
             $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
-            redirect(base_url() . 'index.php?admin/section/' . $data['class_id'] , 'refresh');
+            redirect(base_url().'index.php?/admin/section/','refresh');;
         }
 
-        if ($param1 == 'edit') {
-            $data['name']       =   $this->input->post('name');
-            $data['nick_name']  =   $this->input->post('nick_name');
-            $data['class_id']   =   $this->input->post('class_id');
-            $data['teacher_id'] =   $this->input->post('teacher_id');
-            $this->db->where('section_id' , $param2);
+        if ($param1 == 'edit') 
+            {
+            $data['section_name']= $this->input->post('sectionname');
+            $data['intake']= $this->input->post('intake');
+           //print_r($data);
+           $this->db->where('section_id' , $param2);
             $this->db->update('section' , $data);
             $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
-            redirect(base_url() . 'index.php?admin/section/' . $data['class_id'] , 'refresh');
+            redirect(base_url() . 'index.php?admin/section/', 'refresh');
         }
 
-        if ($param1 == 'delete') {
-            $this->db->where('section_id' , $param2);
+        if ($param1 == 'delete') 
+            {
+             $this->db->where('section_id' , $param2);
             $this->db->delete('section');
             $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
-            redirect(base_url() . 'index.php?admin/section' , 'refresh');
+            redirect(base_url() . 'index.php?admin/section/', 'refresh');
         }
     }
 
+    
+    
     function get_class_section($class_id)
     {
         $sections = $this->db->get_where('section' , array(

@@ -66,16 +66,7 @@
 								<label for="field-2" class="control-label">Date Of Birth</label>
 								<input type="text" class="form-control datepicker" name="dob" value="" data-start-view="2">
 							</div> 
-							<div class="col-sm-4">
-								<label for="field-2" class="control-label">Category</label>
 							
-									<select name="category" class="form-control selectboxit">
-									  <option value="cat">Select</option>
-									  <option value="obc">OBC</option>
-									  <option value="gen">GEN</option>
-								  </select>
-							
-							</div>
 							<div class="col-sm-4">
 								<label for="field-2" class="control-label">Nationality</label>
 									<select name="nationality" class="form-control" id="section_selector_holder">
@@ -85,6 +76,7 @@
 										
 									</select>
 							</div>
+                                                    <div class="col-sm-4"></div>
 						</div>
 					</div>
 			
@@ -99,7 +91,7 @@
                     <div class="form-group">
                         <div class="col-sm-4">
                             <label for="field-2" class="control-label">Batch</label>
-                            <select name="nationality" class="form-control" id="section_selector_holder">
+                            <select name="batchname" class="form-control" id="section_selector_holder">
                                 <option value="">Select</option>
                                 <?php
                                     $parents = $this->db->get('batch')->result_array();
@@ -114,7 +106,18 @@
                         </div>
                         <div class="col-sm-4">
                             <label for="field-2" class="control-label">Section</label>
-                            <input type="text" class="form-control" name="section" value="" >
+                            <select name="sectionname" class="form-control" id="section_selector_holder">
+                                <option value="">Select</option>
+                                <?php
+                                    $parents = $this->db->get('section')->result_array();
+                                    foreach($parents as $row):
+                                ?>
+                                <option value="<?php echo $row['section_id'];?>"><?php echo $row['section_name'];?></option>
+                                <?php
+                                endforeach;
+                                ?>
+                                
+                            </select>
                         </div>
                         <div class="col-sm-4">
                             <label for="field-1" class="control-label">Admission Date</label>
