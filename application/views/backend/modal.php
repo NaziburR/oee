@@ -25,7 +25,7 @@
                 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"><span class="fa fa-plus"> &nbsp;Add Teacher</span></h4>
+                    <h4 class="modal-title"><span class="fa fa-plus"> &nbsp;OSERP</span></h4>
                 </div>
                 
 				<!-- without this div modal will not work -->

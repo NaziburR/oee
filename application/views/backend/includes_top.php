@@ -8,7 +8,7 @@
 
 
 <?php
-    $skin_colour = $this->db->get_where('settings' , array('type' => 'skin_colour'))->row()->description; 
+    $skin_colour ='default';// $this->db->get_where('settings' , array('type' => 'skin_colour'))->row()->description; 
     if ($skin_colour != ''):?>
 
     <link rel="stylesheet" href="assets/css/skins/<?php echo $skin_colour;?>.css">

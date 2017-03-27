@@ -40,7 +40,7 @@
             
                 <div class="tile-stats tile-green">
                     <div class="icon"><i class="entypo-users"></i></div>
-                    <div class="num" data-start="0" data-end="<?php echo $this->db->count_all('teacher');?>" 
+                    <div class="num" data-start="0" data-end="<?php echo $this->db->count_all('employee');?>" 
                     		data-postfix="" data-duration="800" data-delay="0">0</div>
                     
                     <h3><?php echo get_phrase('teacher');?></h3>
@@ -50,24 +50,12 @@
             </div>
             <div class="col-md-12">
             
-                <div class="tile-stats tile-aqua">
-                    <div class="icon"><i class="entypo-user"></i></div>
-                    <div class="num" data-start="0" data-end="<?php echo $this->db->count_all('parent');?>" 
-                    		data-postfix="" data-duration="500" data-delay="0">0</div>
-                    
-                    <h3><?php echo get_phrase('parent');?></h3>
-                   <p>Total parents</p>
-                </div>
-                
-            </div>
-            <div class="col-md-12">
-            
                 <div class="tile-stats tile-blue">
                     <div class="icon"><i class="entypo-chart-bar"></i></div>
                     <?php 
-							$check	=	array(	'date' => date('Y-m-d') , 'status' => '1' );
-							$query = $this->db->get_where('attendance' , $check);
-							$present_today		=	$query->num_rows();
+							$check	=array(	'course_name' => 'B.E' , 'course_duration' => '4' );
+							$query = $this->db->get_where('course' , $check);
+							$present_today=$query->num_rows();
 						?>
                     <div class="num" data-start="0" data-end="<?php echo $present_today;?>" 
                     		data-postfix="" data-duration="500" data-delay="0">0</div>
@@ -100,23 +88,7 @@
 					editable: false,
 					firstDay: 1,
 					height: 530,
-					droppable: false,
-					
-					events: [
-						<?php 
-						$notices	=	$this->db->get('noticeboard')->result_array();
-						foreach($notices as $row):
-						?>
-						{
-							title: "<?php echo $row['notice_title'];?>",
-							start: new Date(<?php echo date('Y',$row['create_timestamp']);?>, <?php echo date('m',$row['create_timestamp'])-1;?>, <?php echo date('d',$row['create_timestamp']);?>),
-							end:	new Date(<?php echo date('Y',$row['create_timestamp']);?>, <?php echo date('m',$row['create_timestamp'])-1;?>, <?php echo date('d',$row['create_timestamp']);?>) 
-						},
-						<?php 
-						endforeach
-						?>
-						
-					]
+					droppable: false
 				});
 	});
   </script>

@@ -200,7 +200,55 @@ class Admin extends CI_Controller
             redirect(base_url() . 'index.php?admin/student_information/' . $param1, 'refresh');
         }
     }
-     /****MANAGE PARENTS CLASSWISE*****/
+    
+    function department()
+    {
+        if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+			
+	$page_data['page_name']  = 'department';
+	$page_data['page_title'] = 'Departments';
+	$this->load->view('backend/index', $page_data);
+    }
+            
+    
+    function manage_department($param='',$param2='')
+    {
+        if($this->session->userdata('admin_login')!=1)
+            redirect ('login','refresh');
+        if($param=='create')
+        {
+            $data['department_id']= $this->input->post('deptid');
+            $data['department_name']= $this->input->post('deptname');
+            
+            $this->db->insert('department',$data);
+            $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
+            redirect(base_url().'index.php?/admin/department/','refresh');
+        }
+        if($param=='edit')
+        {
+            $data['department_name']= $this->input->post('deptname');
+            
+            print_r($data);
+            $this->db->where('department_id' , $param2);
+            $this->db->update('department' , $data);
+            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+            redirect(base_url() . 'index.php?admin/department/', 'refresh');
+        }
+        if($param=='delete')
+        {
+            $this->db->where('department_id' , $param2);
+            $this->db->delete('department');
+            $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
+            redirect(base_url() . 'index.php?admin/department/', 'refresh');
+        }
+        
+    }
+
+
+
+
+    /****MANAGE PARENTS CLASSWISE*****/
     function parent($param1 = '', $param2 = '', $param3 = '')
     {
         if ($this->session->userdata('admin_login') != 1)
@@ -260,7 +308,8 @@ class Admin extends CI_Controller
             $this->email_model->account_opening_email('teacher', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
             redirect(base_url() . 'index.php?admin/teacher/', 'refresh');
         }
-        if ($param1 == 'do_update') {
+        if ($param1 == 'do_update') 
+            {
             $data['name']        = $this->input->post('name');
             $data['birthday']    = $this->input->post('birthday');
             $data['sex']         = $this->input->post('sex');

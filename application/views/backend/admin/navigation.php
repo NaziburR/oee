@@ -4,7 +4,7 @@
         <!-- logo -->
         <div class="logo" style="">
             <a href="<?php echo base_url(); ?>">
-                <img src="uploads/logo.png"  style="max-height:60px;"/>
+                <img src="uploads/oserplogo.png"  style="max-height:60px;"/>
             </a>
         </div>
 
@@ -57,31 +57,19 @@
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('Registration'); ?></span>
                     </a>
                 </li>
-
-                <!-- STUDENT BULK ADMISSION -->
-               <!--  <li class="<?php //if ($page_name == 'student_bulk_add') echo 'active'; ?> ">
-                    <a href="<?php// echo base_url(); ?>index.php?admin/student_bulk_add">
-                        <span><i class="entypo-dot"></i> <?php //echo get_phrase('admit_bulk_student'); ?></span>
+                
+                <li class="<?php if ($page_name == 'Enrollment') echo 'active'; ?> ">
+                    <a href="<?php echo base_url(); ?>index.php?admin/enrollment">
+                        <span><i class="entypo-dot"></i> <?php echo get_phrase('Enrollment'); ?></span>
                     </a>
-                </li> -->
-
+                </li>
+                
                 <!-- STUDENT INFORMATION -->
                 <li class="<?php if ($page_name == 'student_information' || $page_name == 'student_marksheet') echo 'opened active'; ?> ">
                     <a href="#">
                         <span><i class="entypo-dot"></i> Student Details</span>
                     </a>
-                    <ul>
-                        <?php
-                        $classes = $this->db->get('class')->result_array();
-                        foreach ($classes as $row):
-                            ?>
-                            <li class="<?php if ($page_name == 'student_information' && $page_name == 'student_marksheet' && $class_id == $row['class_id']) echo 'active'; ?>">
-                                <a href="<?php echo base_url(); ?>index.php?admin/student_information/<?php echo $row['class_id']; ?>">
-                                    <span><?php echo $row['name']; ?></span>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
+                    
                 </li>
 
             </ul>
@@ -102,19 +90,11 @@
                 <span><?php echo get_phrase('Department'); ?></span>
             </a>
         </li>
-		
-        <!-- PARENTS -->
-<!--        <li class="<?php// if ($page_name == 'parent') echo 'active'; ?> ">
-            <a href="<?php //echo base_url(); ?>index.php?admin/parent">
-                <i class="entypo-user"></i>
-                <span><?php //echo get_phrase('parents'); ?></span>
-            </a>
-        </li>-->
+
 
         <!-- CLASS -->
         <li class="<?php
-        if ($page_name == 'class' ||
-                $page_name == 'section')
+        if ($page_name == 'class' ||$page_name == 'section')
             echo 'opened active';
         ?> ">
             <a href="#">
@@ -122,16 +102,23 @@
                 <span><?php echo get_phrase('Course'); ?></span>
             </a>
             <ul>
-                <li class="<?php if ($page_name == 'class') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/classes">
+                <li class="<?php if ($page_name == 'course') echo 'active'; ?> ">
+                    <a href="<?php echo base_url(); ?>index.php?admin/course">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('Manage_course'); ?></span>
                     </a>
                 </li>
-               <!-- <li class="<?php //if ($page_name == 'section') echo 'active'; ?> ">
-                    <a href="<?php// echo base_url(); ?>index.php?admin/section">
-                        <span><i class="entypo-dot"></i> <?php //echo get_phrase('manage_sections'); ?></span>
+                
+                <li class="<?php if ($page_name == 'batch') echo 'active'; ?> ">
+                    <a href="<?php echo base_url(); ?>index.php?admin/batch">
+                        <span><i class="entypo-dot"></i> <?php echo get_phrase('Manage_batch'); ?></span>
                     </a>
-                </li> -->
+                </li>
+                
+                <li class="<?php if ($page_name == 'section') echo 'active'; ?> ">
+                    <a href="<?php echo base_url(); ?>index.php?admin/section">
+                        <span><i class="entypo-dot"></i> <?php echo get_phrase('manage_sections'); ?></span>
+                    </a>
+                </li> 
             </ul>
         </li>
 
@@ -141,18 +128,7 @@
                 <i class="entypo-docs"></i>
                 <span>Subjects</span>
             </a>
-            <ul>
-                <?php
-                $classes = $this->db->get('class')->result_array();
-                foreach ($classes as $row):
-                    ?>
-                    <li class="<?php if ($page_name == 'subject' && $class_id == $row['class_id']) echo 'active'; ?>">
-                        <a href="<?php echo base_url(); ?>index.php?admin/subject/<?php echo $row['class_id']; ?>">
-                            <span><?php //echo get_phrase('class'); ?> <?php echo $row['name']; ?></span>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+           
         </li>
 
         <!-- CLASS ROUTINE -->
@@ -217,13 +193,7 @@
             </ul>
         </li>
 
-        <!-- PAYMENT -->
-        <!-- <li class="<?php //if ($page_name == 'invoice') echo 'active'; ?> ">
-            <a href="<?php //echo base_url(); ?>index.php?admin/invoice">
-                <i class="entypo-credit-card"></i>
-                <span><?php //echo get_phrase('payment'); ?></span>
-            </a>
-        </li> -->
+       
 
         <!-- ACCOUNTING -->
         <li class="<?php

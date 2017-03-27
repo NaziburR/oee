@@ -1,10 +1,10 @@
 <?php
-	$system_name        =	$this->db->get_where('settings' , array('type'=>'system_name'))->row()->description;
-	$system_title       =	$this->db->get_where('settings' , array('type'=>'system_title'))->row()->description;
-	$text_align         =	$this->db->get_where('settings' , array('type'=>'text_align'))->row()->description;
+	$system_name        ='OSERP';//	$this->db->get_where('settings' , array('type'=>'system_name'))->row()->description;
+	$system_title       ='OSERP';//	$this->db->get_where('settings' , array('type'=>'system_title'))->row()->description;
+	$text_align         ='left-to-right';	//$this->db->get_where('settings' , array('type'=>'text_align'))->row()->description;
 	$account_type       =	$this->session->userdata('login_type');
-	$skin_colour        =   $this->db->get_where('settings' , array('type'=>'skin_colour'))->row()->description;
-	$active_sms_service =   $this->db->get_where('settings' , array('type'=>'active_sms_service'))->row()->description;
+	$skin_colour        = 'default';//  $this->db->get_where('settings' , array('type'=>'skin_colour'))->row()->description;
+	$active_sms_service ='disbaled';//   $this->db->get_where('settings' , array('type'=>'active_sms_service'))->row()->description;
 	?>
 <!DOCTYPE html>
 <html lang="en" dir="<?php if ($text_align == 'right-to-left') echo 'rtl';?>">
