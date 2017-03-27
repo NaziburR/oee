@@ -49,52 +49,52 @@ class Admin extends CI_Controller
 		$this->load->view('backend/index', $page_data);
 	}
 	
-	function student_bulk_add($param1 = '')
-	{
-		if ($this->session->userdata('admin_login') != 1)
-            redirect(base_url(), 'refresh');
-			
-		if ($param1 == 'import_excel')
-		{
-			move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_import.xlsx');
-			// Importing excel sheet for bulk student uploads
-
-			include 'simplexlsx.class.php';
-			
-			$xlsx = new SimpleXLSX('uploads/student_import.xlsx');
-			
-			list($num_cols, $num_rows) = $xlsx->dimension();
-			$f = 0;
-			foreach( $xlsx->rows() as $r ) 
-			{
-				// Ignore the inital name row of excel file
-				if ($f == 0)
-				{
-					$f++;
-					continue;
-				}
-				for( $i=0; $i < $num_cols; $i++ )
-				{
-					if ($i == 0)	    $data['name']			=	$r[$i];
-					else if ($i == 1)	$data['birthday']		=	$r[$i];
-					else if ($i == 2)	$data['sex']		    =	$r[$i];
-					else if ($i == 3)	$data['address']		=	$r[$i];
-					else if ($i == 4)	$data['phone']			=	$r[$i];
-					else if ($i == 5)	$data['email']			=	$r[$i];
-					else if ($i == 6)	$data['password']		=	$r[$i];
-					else if ($i == 7)	$data['roll']			=	$r[$i];
-				}
-				$data['class_id']	=	$this->input->post('class_id');
-				
-				$this->db->insert('student' , $data);
-				//print_r($data);
-			}
-			redirect(base_url() . 'index.php?admin/student_information/' . $this->input->post('class_id'), 'refresh');
-		}
-		$page_data['page_name']  = 'student_bulk_add';
-		$page_data['page_title'] = get_phrase('add_bulk_student');
-		$this->load->view('backend/index', $page_data);
-	}
+//	function student_bulk_add($param1 = '')
+//	{
+//		if ($this->session->userdata('admin_login') != 1)
+//            redirect(base_url(), 'refresh');
+//			
+//		if ($param1 == 'import_excel')
+//		{
+//			move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_import.xlsx');
+//			// Importing excel sheet for bulk student uploads
+//
+//			include 'simplexlsx.class.php';
+//			
+//			$xlsx = new SimpleXLSX('uploads/student_import.xlsx');
+//			
+//			list($num_cols, $num_rows) = $xlsx->dimension();
+//			$f = 0;
+//			foreach( $xlsx->rows() as $r ) 
+//			{
+//				// Ignore the inital name row of excel file
+//				if ($f == 0)
+//				{
+//					$f++;
+//					continue;
+//				}
+//				for( $i=0; $i < $num_cols; $i++ )
+//				{
+//					if ($i == 0)	    $data['name']			=	$r[$i];
+//					else if ($i == 1)	$data['birthday']		=	$r[$i];
+//					else if ($i == 2)	$data['sex']		    =	$r[$i];
+//					else if ($i == 3)	$data['address']		=	$r[$i];
+//					else if ($i == 4)	$data['phone']			=	$r[$i];
+//					else if ($i == 5)	$data['email']			=	$r[$i];
+//					else if ($i == 6)	$data['password']		=	$r[$i];
+//					else if ($i == 7)	$data['roll']			=	$r[$i];
+//				}
+//				$data['class_id']	=	$this->input->post('class_id');
+//				
+//				$this->db->insert('student' , $data);
+//				//print_r($data);
+//			}
+//			redirect(base_url() . 'index.php?admin/student_information/' . $this->input->post('class_id'), 'refresh');
+//		}
+//		$page_data['page_name']  = 'student_bulk_add';
+//		$page_data['page_title'] = get_phrase('add_bulk_student');
+//		$this->load->view('backend/index', $page_data);
+//	}
 	
 	function student_information($class_id = '')
 	{
@@ -134,26 +134,27 @@ class Admin extends CI_Controller
     
     
     
-	//this method will call after press add student
+//This method will call after press add student
     function student($param1 = '', $param2 = '', $param3 = '')
     {
         if ($this->session->userdata('admin_login') != 1)
             redirect('login', 'refresh');
         if ($param1 == 'create') 
         {
-            $data['roll']         = $this->input->post('stdid');
-            $data['fname']        = $this->input->post('fname');
-            $data['lname']        = $this->input->post('lname');
-            $data['sex']          = $this->input->post('gender');
+            $data['student_id']         = $this->input->post('stdid');
+            $data['first_name']        = $this->input->post('fname');
+            $data['middle_name']       = $this->input->post('mname');
+            $data['last_name']        = $this->input->post('lname');
             $data['email']        = $this->input->post('email');
             $data['phone']        = $this->input->post('mobileno');
             $data['dob']          = $this->input->post('dob');
-            $data['category']     = $this->input->post('category');
-            $data['nationality']  = $this->input->post('nationality');
-            $data['course']       = $this->input->post('course');
-            $data['batch']        = $this->input->post('batch');
-            $data['section']      = $this->input->post('section');
-            $data['admitdate']    = $this->input->post('admitdate');
+            //$data['nationality']  = $this->input->post('nationality');
+            $data['address']       = $this->input->post('address');
+            
+            $data['batch_id']        = $this->input->post('batch');
+            $data['section_id']      = $this->input->post('section');
+            $data['admission_date']    = $this->input->post('admitdate');
+            $data['paswd']    = $this->input->post('paswd');
             
             
            //print_r(array_values($data));
@@ -342,6 +343,14 @@ class Admin extends CI_Controller
         }
     }
 
+    function enrollment()
+    {
+        if($this->session->userdata('admin_login')!=1)
+            redirect ('login','refresh');
+        $page_data['page_name']  = 'enrollment';
+	$page_data['page_title'] = 'Enrolment';
+	$this->load->view('backend/index', $page_data);
+    }
     /****MANAGE PARENTS CLASSWISE*****/
     function parent($param1 = '', $param2 = '', $param3 = '')
     {

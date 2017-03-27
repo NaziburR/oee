@@ -4,7 +4,7 @@
 .style3 {font-size: 18px}
 -->
 </style>
-<p align="center" class="style3"><strong>Disabled in Basic Version</strong></p>
+<!--<p align="center" class="style3"><strong>Disabled in Basic Version</strong></p>
 <p align="center" class="style3"><strong><a href="http://phpsoftwares.com/" target="_blank" class="style2"><u>Upgrade</u></a> to full version for just 14.99$ only. <u>100% Source Code</u> <a href="http://phpsoftwares.com/" target="_blank"><u><span class="style2">www.PhpSoftwares.com</span> </u></a></strong></p>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <div align="center">
@@ -20,7 +20,7 @@
 </select> </td></tr>
 </table>
 <input type="hidden" name="currency_code" value="USD">
-<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal ï¿½ The safer, easier way to pay online.">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-</form>
+</form>-->
 <p><img src="uploads/images/admin/attendance_admin.PNG" width="1062" height="741" /></p>
