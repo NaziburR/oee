@@ -10,8 +10,7 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_batch_add/');" 
-            	class="btn btn-success pull-right">
+        <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_batch_add/');" class="btn btn-success pull-right">
                 <span style="font-size:15px;"><i class="entypo-plus-circled"></i>
             	Add Batch</span>
         </a> 

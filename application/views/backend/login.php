@@ -51,7 +51,7 @@ var baseurl = '<?php echo base_url();?>';
 		<div class="login-content" style="width:100%;">
 			
 			<a href="<?php echo base_url();?>" class="logo">
-				<img src="uploads/logo.png" height="60" alt="" />
+                            <h1 style="color:white;">OpenSource Educational ERP</h1>
 			</a>
 			
 			<p class="description">

@@ -245,6 +245,54 @@ class Admin extends CI_Controller
         
     }
 
+    function course()
+    {
+        if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+	$page_data['page_name']  = 'course';
+	$page_data['page_title'] = 'Course';
+	$this->load->view('backend/index', $page_data);
+    }
+    function manage_course($param='', $param2='')
+    {
+        if($this->session->userdata('admin_login')!=1)
+            redirect ('login','refresh');
+        if($param=='create')
+        {
+            $data['course_id']= $this->input->post('courseid');
+            $data['department_id']= $this->input->post('deptid');
+            $data['course_name']= $this->input->post('coursename');
+            $data['course_description']= $this->input->post('coursedescription');
+            $data['course_duration']= $this->input->post('courseduration');
+            
+            $this->db->insert('course',$data);
+            $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
+            redirect(base_url().'index.php?/admin/course/','refresh');
+        }
+        if($param=='edit')
+        {
+            $data['department_id']= $this->input->post('deptid');
+            $data['course_name']= $this->input->post('coursename');
+            $data['course_description']= $this->input->post('coursedescription');
+            $data['course_duration']= $this->input->post('courseduration');
+            
+            //print_r($data);
+            
+            $this->db->where('course_id' , $param2);
+            $this->db->update('course' , $data);
+            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+            redirect(base_url() . 'index.php?/admin/course/', 'refresh');
+        }
+        if($param=='delete')
+        {
+            $this->db->where('course_id' , $param2);
+            $this->db->delete('course');
+            $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
+            redirect(base_url() . 'index.php?admin/course/', 'refresh');
+        } 
+    }
+    
+    
     function batch()
     {
         if($this->session->userdata('admin_login')!=1)
