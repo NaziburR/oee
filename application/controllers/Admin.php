@@ -142,19 +142,18 @@ class Admin extends CI_Controller
         if ($param1 == 'create') 
         {
             $data['student_id']         = $this->input->post('stdid');
-            $data['first_name']        = $this->input->post('fname');
-            $data['middle_name']       = $this->input->post('mname');
-            $data['last_name']        = $this->input->post('lname');
-            $data['email']        = $this->input->post('email');
-            $data['phone']        = $this->input->post('mobileno');
-            $data['dob']          = $this->input->post('dob');
+            $data['first_name']         = $this->input->post('fname');
+            $data['middle_name']        = $this->input->post('mname');
+            $data['last_name']          = $this->input->post('lname');
+            $data['gender']             = $this->input->post('gender');
+            $data['dob']                = $this->input->post('dob');
+            $data['email']              = $this->input->post('email');
+            $data['mobile']             = $this->input->post('mobileno');
+            $data['dob']                = $this->input->post('dob');
             //$data['nationality']  = $this->input->post('nationality');
-            $data['address']       = $this->input->post('address');
-            
-            $data['batch_id']        = $this->input->post('batch');
-            $data['section_id']      = $this->input->post('section');
-            $data['admission_date']    = $this->input->post('admitdate');
-            $data['paswd']    = $this->input->post('paswd');
+            $data['address']            = $this->input->post('address');
+            $data['admission_date']     = $this->input->post('admitdate');
+            $data['password']           = $this->input->post('password');
             
             
            //print_r(array_values($data));

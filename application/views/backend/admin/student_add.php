@@ -5,17 +5,17 @@
             </div>
 			<div class="panel-body">
 			
-                <?php echo form_open(base_url() . 'index.php?admin/student/create/' , array('class' => ' validate', 'enctype' => 'multipart/form-data'));?>
+                                    <?php echo form_open(base_url() . 'index.php?admin/student/create/' , array('class' => ' validate', 'enctype' => 'multipart/form-data'));?>
 					<div class="row ">
 						<div class="form-group">
-							<div class="col-sm-4">
-								<label for="field-1" class="control-label" >Student ID</label>
-								<input type="text" class="form-control" name="stdid" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>" value="" >
-							</div>
-							<div class="col-sm-4">
-							</div>
-							<div class="col-sm-4">
-							</div>
+                                                    <div class="col-sm-4">
+                                                        <label for="field-1" class="control-label" >Student ID</label>
+                                                        <input type="text" class="form-control" name="stdid" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>" value="" >
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                    </div>
 							
 						</div>
 					</div>
@@ -66,44 +66,45 @@
 								<label for="field-2" class="control-label">Date Of Birth</label>
 								<input type="text" class="form-control datepicker" name="dob" value="" data-start-view="2">
 							</div> 
-							
 							<div class="col-sm-4">
-								<label for="field-2" class="control-label">Nationality</label>
-									<select name="nationality" class="form-control" id="section_selector_holder">
-										<option value="">Select</option>
-										<option value="india">India</option>
-										<option value="usa">U.S.A</option>
-										
-									</select>
-							</div>
-                                                    <div class="col-sm-4"></div>
+                                                            <label for="field-2" class="control-label">Course</label>
+                                                            <select name="coursename" class="form-control" id="section_selector_holder">
+                                                                <option value="">Select</option>
+                                                                <?php
+                                                                    $parents = $this->db->get('course')->result_array();
+                                                                    foreach($parents as $row):
+                                                                ?>
+                                                                <option value="<?php echo $row['course_id'];?>"><?php echo $row['course_name'];?></option>
+                                                                <?php
+                                                                endforeach;
+                                                                ?>
+
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <label for="field-2" class="control-label">Batch</label>
+                                                            <select name="batchname" class="form-control" id="section_selector_holder">
+                                                                <option value="">Select</option>
+                                                                <?php
+                                                                    $parents = $this->db->get('batch')->result_array();
+                                                                    foreach($parents as $row):
+                                                                ?>
+                                                                <option value="<?php echo $row['id'];?>"><?php echo $row['batch_name'];?></option>
+                                                                <?php
+                                                                endforeach;
+                                                                ?>
+
+                                                            </select>
+
+                                                        </div>
+							
 						</div>
+                                                    
 					</div>
-			
 				
 		
-		<!-- Academic details -->
-		
-			<div class="panel-heading">
-                            <h4 class="fa fa-info-circle" style="display: inline-block; padding: 10px 10px 10px 10px; margin: 0 ; font-size: 20px; font-weight: 400; float:left; cursor: default;color: #fff;background: #f39c12;background-color: #f39c12;width:100%"> Academic Details</h4>
-			</div>
                 <div class="row ">
                     <div class="form-group">
-                        <div class="col-sm-4">
-                            <label for="field-2" class="control-label">Batch</label>
-                            <select name="batchname" class="form-control" id="section_selector_holder">
-                                <option value="">Select</option>
-                                <?php
-                                    $parents = $this->db->get('batch')->result_array();
-                                    foreach($parents as $row):
-                                ?>
-                                <option value="<?php echo $row['id'];?>"><?php echo $row['batch_name'];?></option>
-                                <?php
-                                endforeach;
-                                ?>
-                                
-                            </select>
-                        </div>
                         <div class="col-sm-4">
                             <label for="field-2" class="control-label">Section</label>
                             <select name="sectionname" class="form-control" id="section_selector_holder">
@@ -123,12 +124,22 @@
                             <label for="field-1" class="control-label">Admission Date</label>
                             <input type="text" class="form-control datepicker" name="admitdate" value="" data-start-view="2">
                         </div>
+                        
+                        <div class="col-sm-4">
+                            <label for="field-1" class="control-label">Password</label>
+                            <input type="password" class="form-control" name="password" value="" >
+                        </div>
                     </div>
                 </div>		
+                            
                 <div class="row ">
                     <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-5">
-                            <label for="field-1" class="col-sm-3 control-label">Photo</label>
+                        <div class="col-sm-4">
+                            <label for="field-2" class="control-label">Address</label>
+                            <textarea name="address" class="form-control" rows="5" id="comment"></textarea>
+                        </div>
+                        <div class="col-sm-8">
+                            <label for="field-1" class="col-sm-1 control-label">Photo</label>
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 100px; height: 100px;" data-trigger="fileinput">
                                     <img src="http://placehold.it/200x200" alt="...">
@@ -146,12 +157,13 @@
                         </div>
                     </div>
                 </div>
-                                        <div class="form-group">
-						<div class="col-sm-offset-4 col-sm-5">
-							<button type="submit" class="btn btn-success">Add Student</button>
-						</div>
-					</div>
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-5">
+                        <button type="submit" class="btn btn-success">Add Student</button>
+                    </div>
+                </div>
                 <?php echo form_close();?>
+                </div>
             </div>
         </div>
     </div>
