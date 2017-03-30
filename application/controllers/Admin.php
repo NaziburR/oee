@@ -200,7 +200,50 @@ class Admin extends CI_Controller
             redirect(base_url() . 'index.php?admin/student_information/' . $param1, 'refresh');
         }
     }
+    function institution()
+    {
+        if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+			
+	$page_data['page_name']  = 'institution';
+	$page_data['page_title'] = 'institutions';
+	$this->load->view('backend/index', $page_data);
+    }
+            
     
+    function manage_institution($param='',$param2='')
+    {
+        if($this->session->userdata('admin_login')!=1)
+            redirect ('login','refresh');
+        if($param=='create')
+        {
+            $data['INSTITUTE_TYPE_CODE']= $this->input->post('institutecode');
+            $data['INSTITUTE_TYPE']= $this->input->post('institutetype');
+             $data['INSTITUTE_DESCRIPTION']= $this->input->post('institutedescription');
+            $this->db->insert('institute_type',$data);
+            $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
+            redirect(base_url().'index.php?/admin/institution/','refresh');
+        }
+        if($param=='edit')
+        {
+             $data['INSTITUTE_TYPE']= $this->input->post('institutetype');
+             $data['INSTITUTE_DESCRIPTION']= $this->input->post('institutedescription');
+            print_r($data);
+            $this->db->where('INSTITUTE_TYPE_CODE' , $param2);
+            $this->db->update('institute_type' , $data);
+            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+            redirect(base_url() . 'index.php?admin/institution/', 'refresh');
+        }
+        if($param=='delete')
+        {
+            $this->db->where('INSTITUTE_TYPE_CODE' , $param2);
+            $this->db->delete('institute_type');
+            $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
+            redirect(base_url() . 'index.php?admin/institution/', 'refresh');
+        }
+        
+    }
+
     function department()
     {
         if ($this->session->userdata('admin_login') != 1)
@@ -341,6 +384,50 @@ class Admin extends CI_Controller
             redirect(base_url() . 'index.php?admin/batch/', 'refresh');
         }
     }
+     function subject()
+    {
+        if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+			
+	$page_data['page_name']  = 'subject';
+	$page_data['page_title'] = 'subjects';
+	$this->load->view('backend/index', $page_data);
+    }
+            
+    
+    function manage_subject($param='',$param2='')
+    {
+        if($this->session->userdata('admin_login')!=1)
+            redirect ('login','refresh');
+        if($param=='create')
+        {
+            $data['subject_id']= $this->input->post('subjectid');
+            $data['subject_name']= $this->input->post('subjectname');
+            
+            $this->db->insert('subject',$data);
+            $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
+            redirect(base_url().'index.php?/admin/subject/','refresh');
+        }
+        if($param=='edit')
+        {
+            $data['subject_name']= $this->input->post('subjectname');
+            
+            print_r($data);
+            $this->db->where('subject_id' , $param2);
+            $this->db->update('subject' , $data);
+            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+            redirect(base_url() . 'index.php?admin/subject/', 'refresh');
+        }
+        if($param=='delete')
+        {
+            $this->db->where('subject_id' , $param2);
+            $this->db->delete('subject');
+            $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
+            redirect(base_url() . 'index.php?admin/subject/', 'refresh');
+        }
+        
+    }
+
 
     function enrollment()
     {
@@ -445,7 +532,7 @@ class Admin extends CI_Controller
     }
     
     /****MANAGE SUBJECTS*****/
-    function subject($param1 = '', $param2 = '' , $param3 = '')
+   /* function subject($param1 = '', $param2 = '' , $param3 = '')
     {
         if ($this->session->userdata('admin_login') != 1)
             redirect(base_url(), 'refresh');
@@ -483,7 +570,7 @@ class Admin extends CI_Controller
         $page_data['page_title'] = get_phrase('manage_subject');
         $this->load->view('backend/index', $page_data);
     }
-    
+    */
     /****MANAGE CLASSES*****/
     function classes($param1 = '', $param2 = '')
     {

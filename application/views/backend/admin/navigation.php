@@ -83,11 +83,11 @@
             </a>
         </li>
 		
-		<!-- DEPARTMENT-->
-		<li class="<?php if ($page_name == 'department') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/department">
+		<!-- Institution type-->
+		<li class="<?php if ($page_name == 'Institution') echo 'active'; ?> ">
+            <a href="<?php echo base_url(); ?>index.php?admin/institution">
                 <i class="entypo-flow-tree"></i>
-                <span><?php echo get_phrase('Department'); ?></span>
+                <span><?php echo get_phrase('Institution_type'); ?></span>
             </a>
         </li>
 
@@ -107,6 +107,12 @@
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('Manage_course'); ?></span>
                     </a>
                 </li>
+                 <li class="<?php if ($page_name == 'department') echo 'active'; ?> ">
+            <a href="<?php echo base_url(); ?>index.php?admin/department">
+               
+               <span><i class="entypo-dot"></i> <?php echo get_phrase('Manage_department'); ?></span>
+            </a>
+        </li>
                 
                 <li class="<?php if ($page_name == 'batch') echo 'active'; ?> ">
                     <a href="<?php echo base_url(); ?>index.php?admin/batch">
@@ -124,9 +130,9 @@
 
         <!-- SUBJECT -->
         <li class="<?php if ($page_name == 'subject') echo 'opened active'; ?> ">
-            <a href="#">
-                <i class="entypo-docs"></i>
-                <span>Subjects</span>
+            <a href="<?php echo base_url(); ?>index.php?admin/subject">
+                <i class="entypo-flow-tree"></i>
+                <span><?php echo get_phrase('Subject'); ?></span>
             </a>
            
         </li>
