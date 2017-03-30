@@ -10,28 +10,30 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_subject_add/');" 
+        <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_institution_add/');" 
             	class="btn btn-success pull-right">
                 <span style="font-size:15px;"><i class="entypo-plus-circled"></i>
-            	Add Subject</span>
+            	Add Institute Type</span>
         </a> 
         <table class="table table-responsive">
             <thead >
                 <tr style="background-color:lightgrey">
-                    <th>Subject ID</th>
-                    <th>Subject Name</th>
+                    <th>Institution type code</th>
+                    <th>Institute type</th>
+                    <th>Institute description</th>
                     <th>Options</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 // put your code here
-                    $dept=$this->db->get('subject')->result_array();
+                    $dept=$this->db->get('institute_type')->result_array();
                     foreach ($dept as $row):
                 ?>
                 <tr>
-                    <td><?php echo $row['subject_id'];?></td>
-                    <td><?php echo $row['subject_name'];?></td>
+                    <td><?php echo $row['INSTITUTE_TYPE_CODE'];?></td>
+                    <td><?php echo $row['INSTITUTE_TYPE'];?></td>
+                    <td><?php echo $row['INSTITUTE_DESCRIPTION'];?></td>
                     
                     <td>
                         <div class="btn-group">
@@ -41,7 +43,7 @@ and open the template in the editor.
                             <ul class="dropdown-menu dropdown-default pull-right" role="menu">
                                 <!-- teacher EDITING LINK -->
                                 <li>
-                                    <a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_subject_edit/<?php echo $row['subject_id'];?>');">
+                                    <a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_institution_edit/<?php echo $row['INSTITUTE_TYPE_CODE'];?>');">
                                         <i class="entypo-pencil"></i>
                                             <?php echo get_phrase('edit');?>
                                     </a>
@@ -49,7 +51,7 @@ and open the template in the editor.
                                 <li class="divider"></li>
                                 <!-- teacher DELETION LINK -->
                                 <li>
-                                    <a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/manage_subject/delete/<?php echo $row['subject_id'];?>');">
+                                    <a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/manage_institution/delete/<?php echo $row['INSTITUTE_TYPE_CODE'];?>');">
                                         <i class="entypo-trash"></i>
                                             <?php echo get_phrase('delete');?>
                                     </a>
