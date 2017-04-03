@@ -10,34 +10,40 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_batch_add/');" class="btn btn-success pull-right">
+        <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_class_batch_add/');" 
+            	class="btn btn-success pull-right">
                 <span style="font-size:15px;"><i class="entypo-plus-circled"></i>
-            	Add Batch</span>
+            	Add Class Batch</span>
         </a> 
         <table class="table table-responsive">
             <thead >
                 <tr style="background-color:lightgrey">
-                    <th>Batch ID</th>
-                    <th>Batch Name</th>
+                     <th>Class Batch Id</th>
+                    <th>Class Batch Name</th>
+                    <th>Start Month</th>
                     <th>Start Year</th>
+                    <th>End Month</th>
                     <th>End Year</th>
-                     <th>Department</th>
-                    
+                    <th>Batch</th>
                     <th>Options</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 // put your code here
-                      $dept=$this->db->query('select cd.department_name, cdb.batch_id,cdb.batch_name,cdb.start_year,cdb.end_year from course_department cd join course_department_batch cdb ON cd.department_id=cdb.department_id')->result_array();
+                    $dept=$this->db->query('select b.batch_name, c.class_batch_id,c.class_batch_name,c.start_month,c.start_year,c.end_month,c.end_year from department_class_batch c join course_department_batch b ON b.batch_id=c.batch_id')->result_array();
                     foreach ($dept as $row):
                 ?>
                 <tr>
-                    <td><?php echo $row['batch_id'];?></td>
-                    <td><?php echo $row['batch_name'];?></td>
+                     <td><?php echo $row['class_batch_id'];?></td>
+                    <td><?php echo $row['class_batch_name'];?></td>
+                    <td><?php echo $row['start_month'];?></td>
                     <td><?php echo $row['start_year'];?></td>
+                    <td><?php echo $row['end_month'];?></td>
                     <td><?php echo $row['end_year'];?></td>
-                      <td><?php echo $row['department_name'];?></td>
+                    <td><?php echo $row['batch_name'];?></td>
+                    
+                    
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -46,7 +52,7 @@ and open the template in the editor.
                             <ul class="dropdown-menu dropdown-default pull-right" role="menu">
                                 <!-- teacher EDITING LINK -->
                                 <li>
-                                    <a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_batch_edit/<?php echo $row['batch_id'];?>');">
+                                    <a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_class_batch_edit/<?php echo $row['class_batch_id'];?>');">
                                         <i class="entypo-pencil"></i>
                                             <?php echo get_phrase('edit');?>
                                     </a>
@@ -54,7 +60,7 @@ and open the template in the editor.
                                 <li class="divider"></li>
                                 <!-- teacher DELETION LINK -->
                                 <li>
-                                    <a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/manage_batch/delete/<?php echo $row['batch_id'];?>');">
+                                    <a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/manage_class_batch/delete/<?php echo $row['class_batch_id'];?>');">
                                         <i class="entypo-trash"></i>
                                             <?php echo get_phrase('delete');?>
                                     </a>
@@ -69,3 +75,4 @@ and open the template in the editor.
         
     </body>
 </html>
+

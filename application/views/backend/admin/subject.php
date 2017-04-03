@@ -20,6 +20,7 @@ and open the template in the editor.
                 <tr style="background-color:lightgrey">
                     <th>Subject ID</th>
                     <th>Subject Name</th>
+                     <th>Subject Description</th>
                     <th>Options</th>
                 </tr>
             </thead>
@@ -32,6 +33,7 @@ and open the template in the editor.
                 <tr>
                     <td><?php echo $row['subject_id'];?></td>
                     <td><?php echo $row['subject_name'];?></td>
+                     <td><?php echo $row['subject_description'];?></td>
                     
                     <td>
                         <div class="btn-group">

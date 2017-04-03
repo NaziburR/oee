@@ -40,7 +40,7 @@
             
                 <div class="tile-stats tile-green">
                     <div class="icon"><i class="entypo-users"></i></div>
-                    <div class="num" data-start="0" data-end="<?php echo $this->db->count_all('employee');?>" 
+                    <div class="num" data-start="0" data-end="<?php echo $this->db->count_all('staff_details');?>" 
                     		data-postfix="" data-duration="800" data-delay="0">0</div>
                     
                     <h3><?php echo get_phrase('teacher');?></h3>
@@ -54,14 +54,14 @@
                     <div class="icon"><i class="entypo-chart-bar"></i></div>
                     <?php 
 							$check	=array(	'course_name' => 'B.E' , 'course_duration' => '4' );
-							$query = $this->db->get_where('course' , $check);
+							$query = $this->db->get_where('institute_type_course' , $check);
 							$present_today=$query->num_rows();
 						?>
                     <div class="num" data-start="0" data-end="<?php echo $present_today;?>" 
                     		data-postfix="" data-duration="500" data-delay="0">0</div>
                     
-                    <h3><?php echo get_phrase('attendance');?></h3>
-                   <p>Total present student today</p>
+                    <h3><?php echo get_phrase('Course');?></h3>
+                   <p>Total Course available</p>
                 </div>
                 
             </div>

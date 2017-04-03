@@ -15,8 +15,7 @@
             
             <thead>
                 <tr style="background-color:lightgrey">
-                    <th>Course ID</th>
-                    <th>Department</th>
+                     <th>Course Id</th>
                     <th>Course Name</th>
                     <th>Course Description</th>
                     <th>Course Duration</th>
@@ -25,12 +24,11 @@
             </thead>
             <tbody>
                 <?php
-                    $dept=$this->db->query('select d.department_id, d.department_name, c.course_id,c.course_name,c.course_description,c.course_duration from course c join department d ON d.department_id=c.department_id')->result_array();
+                    $dept=$this->db->get('institute_type_course')->result_array();
                     foreach ($dept as $row):
                 ?> 
                 <tr>
-                    <td><?php echo $row['course_id'];?></td>
-                    <td><?php echo $row['department_name'];?></td>
+                     <td><?php echo $row['course_id'];?></td>
                     <td><?php echo $row['course_name'];?></td>
                     <td><?php echo $row['course_description'];?></td>
                     <td><?php echo $row['course_duration'];?></td>

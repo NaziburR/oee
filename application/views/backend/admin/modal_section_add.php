@@ -1,3 +1,15 @@
+<?php 
+$data=$this->db->get('department_class_batch')->result_array();
+
+?>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-primary" data-collapsed="0">
@@ -17,7 +29,20 @@
                                                 <input type="text" class="form-control" name="sectionid" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>" value="" >
                                             </div>
 					</div>
-					
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Class Batch</label>
+                        
+						<div class="col-sm-5">
+							<select name="classbatchid" class="form-control" style="width:100%;">
+                                                            <option value="">Select Class batch</option>
+                                                            <?php foreach ( $data as $row): ?>
+                                                            <option value="<?php echo $row['class_batch_id'];?>"><?php echo $row['class_batch_name'];?> </option>
+                                                                <?php
+                                                                    endforeach;
+                                                                ?>
+                                                        </select>
+						</div>
+					</div>
 					<div class="form-group">
                                             <label for="field-2" class="col-sm-3 control-label">Section Name</label>
                                             <div class="col-sm-5">
@@ -41,3 +66,5 @@
         </div>
     </div>
 </div>
+</body>
+</html>

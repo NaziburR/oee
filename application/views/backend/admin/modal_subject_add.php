@@ -35,6 +35,13 @@ and open the template in the editor.
 							<input type="text" class="form-control" name="subjectname" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>" value="" >
 						</div>
 					</div>
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">subject description</label>
+                        
+						<div class="col-sm-5">
+							<input type="text" class="form-control" name="subjectdescription" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>" value="" >
+						</div>
+					</div>
 					
 					
                     <div class="form-group">

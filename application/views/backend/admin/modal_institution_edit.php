@@ -1,5 +1,5 @@
 <?php 
-$edit_data=$this->db->get_where('institute_type', array('INSTITUTE_TYPE_CODE' => $param2) )->result_array();
+$edit_data=$this->db->get_where('institute_type_master', array('INSTITUTE_TYPE_CODE' => $param2) )->result_array();
 foreach ( $edit_data as $row):
 ?>
 <div class="row">

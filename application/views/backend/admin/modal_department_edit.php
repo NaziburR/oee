@@ -1,5 +1,5 @@
 <?php 
-$edit_data=$this->db->get_where('department', array('department_id' => $param2) )->result_array();
+$edit_data=$this->db->get_where('course_department', array('department_id' => $param2) )->result_array();
 foreach ( $edit_data as $row):
 ?>
 <div class="row">
@@ -19,6 +19,23 @@ foreach ( $edit_data as $row):
                                     <input type="text" class="form-control" name="deptname" value="<?php echo $row['department_name'];?>"/>
                                 </div>
                             </div>
+                             <div class="form-group">
+                                <label for="field-1" class="col-sm-3 control-label">Course</label>
+                                <div class="col-sm-5">
+                                    <select name="courseid" class="form-control" style="width:100%;"> 
+                                        <option value="">Select Course</option>
+                                        <?php 
+                                            $data=$this->db->get('institute_type_course')->result_array();
+                                            foreach ( $data as $row):
+                                        ?>
+                                        <option value="<?php echo $row['course_id'];?>"><?php echo $row['course_name'];?> </option>
+                                        <?php
+                                        endforeach;
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-5">
                                     <button type="submit" class="btn btn-info">Update Details</button>

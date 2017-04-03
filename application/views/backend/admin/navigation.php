@@ -121,6 +121,12 @@
                 </li>
                 
                 <li class="<?php if ($page_name == 'section') echo 'active'; ?> ">
+                    <a href="<?php echo base_url(); ?>index.php?admin/class_batch">
+                        <span><i class="entypo-dot"></i> <?php echo get_phrase('manage_class_batch'); ?></span>
+                    </a>
+                </li>
+                
+                <li class="<?php if ($page_name == 'section') echo 'active'; ?> ">
                     <a href="<?php echo base_url(); ?>index.php?admin/section">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('manage_sections'); ?></span>
                     </a>

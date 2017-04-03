@@ -1,5 +1,5 @@
 <?php 
-$edit_data=$this->db->get_where('course_department_batch', array('batch_id' => $param2) )->result_array();
+$edit_data=$this->db->get_where('department_class_batch', array('class_batch_id' => $param2) )->result_array();
 foreach ( $edit_data as $row):
 ?>
 <div class="row">
@@ -11,37 +11,48 @@ foreach ( $edit_data as $row):
 		</div>
             </div>
             <div class="panel-body">
-                    <?php echo form_open(base_url() . 'index.php?admin/manage_batch/edit/'.$row['batch_id'] , array('class' => 'form-horizontal validate','target'=>'_top', 'enctype' => 'multipart/form-data'));?>
+                    <?php echo form_open(base_url() . 'index.php?admin/manage_class_batch/edit/'.$row['class_batch_id'] , array('class' => 'form-horizontal validate','target'=>'_top', 'enctype' => 'multipart/form-data'));?>
                         
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Batch Name</label>
+                                <label class="col-sm-3 control-label">Class Batch Name</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="batchname" value="<?php echo $row['batch_name'];?>"/>
+                                    <input type="text" class="form-control" name="classbatchname" value="<?php echo $row['class_batch_name'];?>"/>
                                 </div>
                             </div>
-                            
+                             <div class="form-group">
+                                <label for="field-1" class="col-sm-3 control-label">Start Month</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control datepicker fill-up" name="startmonth" value="<?php echo $row['start_month'];?>"/>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="field-1" class="col-sm-3 control-label">Start Year</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control  fill-up" name="startyear" value="<?php echo $row['start_year'];?>"/>
+                                    <input type="text" class="form-control datepicker fill-up" name="startyear" value="<?php echo $row['start_year'];?>"/>
+                                </div>
+                            </div>
+                           <div class="form-group">
+                                <label for="field-1" class="col-sm-3 control-label">End month</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control datepicker fill-up" name="endmonth" value="<?php echo $row['end_month'];?>"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="field-1" class="col-sm-3 control-label">End Year</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control fill-up" name="endyear" value="<?php echo $row['end_year'];?>"/>
+                                    <input type="text" class="form-control datepicker fill-up" name="endyear" value="<?php echo $row['end_year'];?>"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="field-1" class="col-sm-3 control-label">Department</label>
+                                <label for="field-1" class="col-sm-3 control-label">Batch</label>
                                 <div class="col-sm-5">
-                                    <select name="departmentid" class="form-control" style="width:100%;"> 
-                                        <option value="">Select Department</option>
+                                    <select name="batchid" class="form-control" style="width:100%;"> 
+                                        <option value="">Select Batch</option>
                                         <?php 
-                                            $data=$this->db->get('course_department')->result_array();
+                                            $data=$this->db->get('course_department_batch')->result_array();
                                             foreach ( $data as $row):
                                         ?>
-                                        <option value="<?php echo $row['department_id'];?>"><?php echo $row['department_name'];?> </option>
+                                        <option value="<?php echo $row['batch_id'];?>"><?php echo $row['batch_name'];?> </option>
                                         <?php
                                         endforeach;
                                         ?>

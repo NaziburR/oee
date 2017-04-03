@@ -27,7 +27,7 @@ and open the template in the editor.
             <tbody>
                 <?php
                 // put your code here
-                    $dept=$this->db->get('institute_type')->result_array();
+                    $dept=$this->db->get('institute_type_master')->result_array();
                     foreach ($dept as $row):
                 ?>
                 <tr>

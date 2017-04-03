@@ -4,9 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<?php 
-$data=$this->db->get('department')->result_array();
-?>
+
 
 <html>
     <head>
@@ -57,20 +55,7 @@ $data=$this->db->get('department')->result_array();
 						</div>
 					</div>
                             
-                                        <div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label">Department</label>
-                        
-						<div class="col-sm-5">
-                                                    <select name="deptid" class="form-control" style="width:100%;">
-                                                            <option value="">Select Department</option>
-                                                            <?php foreach ( $data as $row): ?>
-                                                            <option value="<?php echo $row['department_id'];?>"><?php echo $row['department_name'];?> </option>
-                                                                <?php
-                                                                    endforeach;
-                                                                ?>
-                                                    </select>
-						</div>
-					</div>
+                                     
 					
 					
                                          <div class="form-group">

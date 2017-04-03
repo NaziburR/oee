@@ -19,6 +19,13 @@ foreach ( $edit_data as $row):
                                     <input type="text" class="form-control" name="subjectname" value="<?php echo $row['subject_name'];?>"/>
                                 </div>
                             </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Subject Description</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="subjectdescription" value="<?php echo $row['subject_description'];?>"/>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-5">
                                     <button type="submit" class="btn btn-info">Update Details</button>

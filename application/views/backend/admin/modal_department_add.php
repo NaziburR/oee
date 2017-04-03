@@ -4,6 +4,10 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php 
+$data=$this->db->get('institute_type_course')->result_array();
+
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -27,6 +31,21 @@ and open the template in the editor.
 							<input type="text" class="form-control" name="deptid" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>" value="" >
 						</div>
 					</div>
+                                          <div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Course</label>
+                        
+						<div class="col-sm-5">
+							<select name="courseid" class="form-control" style="width:100%;">
+                                                            <option value="">Select Course</option>
+                                                            <?php foreach ( $data as $row): ?>
+                                                            <option value="<?php echo $row['course_id'];?>"><?php echo $row['course_name'];?> </option>
+                                                                <?php
+                                                                    endforeach;
+                                                                ?>
+                                                        </select>
+						</div>
+					</div>
+                                        
 					
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Department Name</label>

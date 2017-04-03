@@ -3,33 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/modal_institution_edit.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/section_edit.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/modal_course_add.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/index.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/course.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/modal_subject_add.php</file>
             <file>file:/C:/xampp/htdocs/school_v1/application/controllers/Admin.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/modal.php</file>
+            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/modal_class_batch_edit.php</file>
             <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/modal_batch_edit.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/subject.php</file>
+            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/modal_section_edit.php</file>
             <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/section.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/controllers/Login.php</file>
+            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/class_batch.php</file>
             <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/modal_batch_add.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/class_routine.php</file>
+            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/modal_section_add.php</file>
             <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/navigation.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/student_add.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/institution.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/section_add.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/login.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/department.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/batch.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/modal_institution_add.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/dashboard.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/modal_course_edit.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/config/database.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/modal_department_add.php</file>
-            <file>file:/C:/xampp/htdocs/school_v1/application/views/backend/admin/modal_department_edit.php</file>
         </group>
     </open-files>
 </project-private>

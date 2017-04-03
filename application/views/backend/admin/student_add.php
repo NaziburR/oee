@@ -71,7 +71,7 @@
                                                             <select name="coursename" class="form-control" id="section_selector_holder">
                                                                 <option value="">Select</option>
                                                                 <?php
-                                                                    $parents = $this->db->get('course')->result_array();
+                                                                    $parents = $this->db->get('institute_type_course')->result_array();
                                                                     foreach($parents as $row):
                                                                 ?>
                                                                 <option value="<?php echo $row['course_id'];?>"><?php echo $row['course_name'];?></option>
@@ -86,10 +86,10 @@
                                                             <select name="batchname" class="form-control" id="section_selector_holder">
                                                                 <option value="">Select</option>
                                                                 <?php
-                                                                    $parents = $this->db->get('batch')->result_array();
+                                                                    $parents = $this->db->get('course_department_batch')->result_array();
                                                                     foreach($parents as $row):
                                                                 ?>
-                                                                <option value="<?php echo $row['id'];?>"><?php echo $row['batch_name'];?></option>
+                                                                <option value="<?php echo $row['batch_id'];?>"><?php echo $row['batch_name'];?></option>
                                                                 <?php
                                                                 endforeach;
                                                                 ?>
@@ -110,7 +110,7 @@
                             <select name="sectionname" class="form-control" id="section_selector_holder">
                                 <option value="">Select</option>
                                 <?php
-                                    $parents = $this->db->get('section')->result_array();
+                                    $parents = $this->db->get('class_section')->result_array();
                                     foreach($parents as $row):
                                 ?>
                                 <option value="<?php echo $row['section_id'];?>"><?php echo $row['section_name'];?></option>
@@ -135,10 +135,25 @@
                 <div class="row ">
                     <div class="form-group">
                         <div class="col-sm-4">
+                            <label for="field-2" class="control-label">Batch Class</label>
+                            <select name="sectionname" class="form-control" id="section_selector_holder">
+                                <option value="">Select</option>
+                                <?php
+                                    $parents = $this->db->get('class_section')->result_array();
+                                    foreach($parents as $row):
+                                ?>
+                                <option value="<?php echo $row['section_id'];?>"><?php echo $row['section_name'];?></option>
+                                <?php
+                                endforeach;
+                                ?>
+                            </select>
+                        </div>
+                        
+                        <div class="col-sm-4">
                             <label for="field-2" class="control-label">Address</label>
                             <textarea name="address" class="form-control" rows="5" id="comment"></textarea>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-4">
                             <label for="field-1" class="col-sm-1 control-label">Photo</label>
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 100px; height: 100px;" data-trigger="fileinput">

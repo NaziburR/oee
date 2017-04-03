@@ -19,6 +19,7 @@ and open the template in the editor.
             <thead >
                 <tr style="background-color:lightgrey">
                     <th>Department ID</th>
+                      <th>Course</th>
                     <th>Department Name</th>
                     <th>Options</th>
                 </tr>
@@ -26,11 +27,12 @@ and open the template in the editor.
             <tbody>
                 <?php
                 // put your code here
-                    $dept=$this->db->get('department')->result_array();
+                     $dept=$this->db->query('select tc.course_name, cd.department_id,cd.department_name from institute_type_course tc join course_department cd ON tc.course_id=cd.course_id')->result_array();
                     foreach ($dept as $row):
                 ?>
                 <tr>
                     <td><?php echo $row['department_id'];?></td>
+                     <td><?php echo $row['course_name'];?></td>
                     <td><?php echo $row['department_name'];?></td>
                     
                     <td>
